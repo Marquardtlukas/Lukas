@@ -5,34 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#17130f">
 <title>Wiesn Tracker – Meine besuchten Zelte</title>
-<style>
-:root{--bg:#f4efe6;--paper:#fffaf2;--ink:#241d17;--muted:#746a5f;--gold:#c9942e;--gold2:#e7bf67;--green:#315b3d;--line:#e4d9c9;--shadow:0 12px 35px rgba(50,35,20,.10)}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#fff8e8 0,#f4efe6 35%,#eee6d9 100%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{padding:42px 20px 28px;background:#17130f;color:#fff;text-align:center;position:relative;overflow:hidden}
-header:after{content:"";position:absolute;inset:auto -10% -70px;height:130px;background:var(--gold);border-radius:50% 50% 0 0/70% 70% 0 0;opacity:.16}
-.eyebrow{text-transform:uppercase;letter-spacing:.18em;color:var(--gold2);font-size:12px;font-weight:800}
-h1{font-family:Georgia,serif;font-size:clamp(34px,7vw,64px);line-height:.98;margin:12px 0 10px;font-weight:700}
-header p{margin:0 auto;max-width:650px;color:#ddd1c2;font-size:15px}
-.wrap{max-width:1120px;margin:-8px auto 50px;padding:0 18px;position:relative;z-index:2}
-.dashboard{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:20px}
-.stats{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;align-items:stretch}
-.stat{background:#f8f1e5;border:1px solid var(--line);border-radius:16px;padding:16px}.stat strong{display:block;font-size:28px}.stat span{font-size:12px;color:var(--muted)}
-.progress{height:9px;background:#e4dacb;border-radius:99px;overflow:hidden;margin-top:11px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:inherit;transition:width .3s}
-.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
-input[type=search]{flex:1;min-width:210px;border:1px solid var(--line);background:white;border-radius:12px;padding:12px 14px;font-size:15px;outline:none}
-button,.file-label{border:1px solid var(--line);background:white;color:var(--ink);border-radius:12px;padding:11px 14px;font-weight:700;cursor:pointer;font-size:13px}
-button:hover,.file-label:hover{border-color:#c6a66e;background:#fffaf1}.tabs{display:flex;gap:7px;margin:18px 0 0;overflow:auto;padding-bottom:2px}.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
-.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;min-height:128px;cursor:pointer;transition:.18s;user-select:none}
-.card:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(50,35,20,.08)}
-.card.visited{background:#eef5ed;border-color:#a9c3ad}.check{position:absolute;right:14px;top:14px;width:25px;height:25px;border-radius:50%;border:1px solid #cfc3b2;display:grid;place-items:center;color:transparent;font-size:15px;font-weight:900}.visited .check{background:var(--green);border-color:var(--green);color:white}
-.type{display:inline-block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#927044;background:#f5ead7;border-radius:99px;padding:4px 7px;margin-bottom:12px}.visited .type{background:#dcebdc;color:#315b3d}
-.card h2{font-family:Georgia,serif;font-size:19px;line-height:1.08;margin:0 32px 7px 0}.card p{font-size:12px;color:var(--muted);margin:0;line-height:1.4}
-footer{max-width:1120px;margin:0 auto;padding:0 18px 40px;color:var(--muted);font-size:12px;text-align:center}
-.empty{text-align:center;padding:45px 20px;color:var(--muted);grid-column:1/-1}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr}.stat:first-child{grid-column:1/-1}}
-@media(max-width:520px){header{padding-top:32px}.grid{grid-template-columns:1fr}.wrap{padding:0 12px}.dashboard{padding:14px}.stats{gap:8px}.stat{padding:13px}.stat strong{font-size:23px}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
@@ -65,40 +38,6 @@ footer{max-width:1120px;margin:0 auto;padding:0 18px 40px;color:var(--muted);fon
 </section>
 </main>
 <footer>Stand der Zeltliste: Oktoberfest 2026. Dein Fortschritt wird nur lokal in diesem Browser gespeichert.</footer>
-<script>
-const tents = [
-["Armbrustschützenzelt","gross","Großes Festzelt"],["Augustiner Festhalle","gross","Großes Festzelt"],["Fischer-Vroni","gross","Großes Festzelt"],["Hacker-Festzelt","gross","Großes Festzelt"],["Hofbräu-Festzelt","gross","Großes Festzelt"],["Käfer Wiesn-Schänke","gross","Großes Festzelt"],["Kufflers Weinzelt","gross","Großes Festzelt"],["Löwenbräu-Festzelt","gross","Großes Festzelt"],["Marstall Festzelt","gross","Großes Festzelt"],["Ochsenbraterei","gross","Großes Festzelt"],["Paulaner Festzelt","gross","Großes Festzelt"],["Pschorr-Festzelt Bräurosl","gross","Großes Festzelt"],["Festhalle Schottenhamel","gross","Großes Festzelt"],["Schützen-Festzelt","gross","Großes Festzelt"],
-["Hühner- und Entenbraterei AMMER","klein","Kleines Zelt"],["Bartls Flösserstadl","klein","Kleines Zelt · neu 2026"],["Bodo's Cafézelt & Cocktailbar","klein","Kleines Zelt"],["Rischart's Café Kaiserschmarrn","klein","Kleines Zelt"],["Café Theres’","klein","Kleines Zelt"],["Feisingers Kas- und Weinstubn","klein","Kleines Zelt"],["Fisch-Bäda","klein","Kleines Zelt"],["Glöckle Wirt","klein","Kleines Zelt"],["Goldener Hahn","klein","Kleines Zelt"],["Heimer Enten- und Hühnerbraterei","klein","Kleines Zelt"],["Heinz Wurst- und Hühnerbraterei","klein","Kleines Zelt"],["Hochreiters Haxnbraterei","klein","Kleines Zelt"],["Hochreiter's Zur Bratwurst","klein","Kleines Zelt"],["Hühnerbraterei Poschner","klein","Kleines Zelt"],["Kalbsbraterei","klein","Kleines Zelt"],["Münchner Knödelei","klein","Kleines Zelt"],["Schiebl's Kaffeehaferl","klein","Kleines Zelt"],["Vinzenzmurr Metzger Stubn","klein","Kleines Zelt"],["Wiesn Guglhupf","klein","Kleines Zelt"],["Wildstuben","klein","Kleines Zelt"],["Wirtshaus im Schichtl","klein","Kleines Zelt"],
-["Boandlkramerei","oide","Oide Wiesn"],["Festzelt Tradition","oide","Oide Wiesn"],["Schützenlisl®","oide","Oide Wiesn"]
-];
-const key="wiesn-tracker-2026";
-let visited=new Set(JSON.parse(localStorage.getItem(key)||"[]"));
-let filter="all";
-const $=s=>document.querySelector(s);
-function render(){
- const q=$("#search").value.trim().toLowerCase();
- const list=tents.filter(t=>{
-   const matchesFilter=filter==="all"||filter===t[1]||(filter==="visited"&&visited.has(t[0]))||(filter==="open"&&!visited.has(t[0]));
-   return matchesFilter && t[0].toLowerCase().includes(q);
- });
- $("#grid").innerHTML=list.length?list.map(t=>{
-   const v=visited.has(t[0]);
-   return '<article class="card '+(v?'visited':'')+'" data-name="'+esc(t[0])+'" tabindex="0" role="button" aria-pressed="'+v+'"><span class="type">'+label(t[1])+'</span><div class="check">✓</div><h2>'+esc(t[0])+'</h2><p>'+esc(t[2])+'</p></article>';
- }).join(""):'<div class="empty">Kein Zelt gefunden.</div>';
- document.querySelectorAll(".card").forEach(c=>{c.onclick=()=>toggle(c.dataset.name);c.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle(c.dataset.name)}}});
- updateStats();
-}
-function label(x){return x==="gross"?"Großes Zelt":x==="klein"?"Kleines Zelt":"Oide Wiesn"}
-function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function toggle(name){visited.has(name)?visited.delete(name):visited.add(name);save();render()}
-function save(){localStorage.setItem(key,JSON.stringify([...visited]))}
-function updateStats(){const n=visited.size,total=tents.length,p=Math.round(n/total*100);$("#count").textContent=n+" / "+total;$("#percent").textContent=p+"%";$("#remaining").textContent=total-n;$("#bar").style.width=p+"%";document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.filter===filter));document.querySelector('.tab[data-filter="all"]').textContent="Alle "+total}
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;render()});
-$("#search").oninput=render;
-$("#reset").onclick=()=>{if(confirm("Wirklich alle Markierungen löschen?")){visited.clear();save();render()}};
-$("#export").onclick=()=>{const blob=new Blob([JSON.stringify({version:1,visited:[...visited]},null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="wiesn-fortschritt.json";a.click();URL.revokeObjectURL(a.href)};
-$("#import").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.visited))throw 0;visited=new Set(d.visited.filter(x=>tents.some(t=>t[0]===x)));save();render()}catch{alert("Die Datei konnte nicht importiert werden.")}};r.readAsText(f);e.target.value=""};
-render();
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
